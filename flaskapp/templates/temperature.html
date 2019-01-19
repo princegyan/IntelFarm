@@ -1,0 +1,110 @@
+<!--
+  In order to have more control over the charts, position its parent(div) relatively
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Embsys Lab</title>
+    <script src="../static/Chart.bundle.js"></script>
+  </head>
+
+  <body>
+    <div style="height: 700px; width: 800px;">
+      <canvas id="myChart" aria-label="hello" role="img">
+        <!-- aria-label and role is for accessibility -->
+        <p>This is a fallback message</p>
+        <!-- the p above is there just in case the image is not rendered -->
+      </canvas>
+      <p>There should be some data here</p>
+    </div>
+    <script>
+      //use a for loop instead
+
+ 
+
+      var ctx = document.getElementById("myChart");
+      var myChart = new Chart(ctx, {
+          type: 'line',
+          data: {
+      labels: [
+      {% for t in time %}
+      "{{ t }}",
+      {% endfor %}
+      ],
+              datasets: [{
+      label: 'Temperature',
+      data: [
+      {% for i in temperature_data %}
+        {{ i }},
+      {% endfor %}
+      ],
+     
+                // pointRadius: 0,
+                  fill: true,
+                  backgroundColor: [
+                      'rgba(54, 162, 235, 0.2)',
+                      'rgba(255, 99, 132, 0.2)',
+                      'rgba(255, 206, 86, 0.2)',
+                      'rgba(75, 192, 192, 0.2)',
+                      'rgba(153, 102, 255, 0.2)',
+                      'rgba(255, 159, 64, 0.2)'
+                  ],
+                  borderColor: [
+                      'rgba(54, 162, 235, 1)',
+                      'rgba(255,99,132,1)',
+                      'rgba(255, 206, 86, 1)',
+                      'rgba(75, 192, 192, 1)',
+                      'rgba(153, 102, 255, 1)',
+                      'rgba(255, 159, 64, 1)'
+                  ],
+                  borderWidth: 2
+              }],
+              
+          },
+          options: {
+              scales: {
+                  yAxes: [{
+                      ticks: {
+                          beginAtZero: true
+                      }
+                  }]
+              },
+              tooltips: {
+                  mode: 'point'
+                  // check the mode with which is is done
+              },
+              title: {
+                  display: 'true',
+                  text: 'Changes in Temperature with month'
+              },
+              scales: {
+                  xAxes: [{
+                      display: 'true',
+                      scaleLabel: {
+                          display: 'true',
+                          labelString: 'Hourly Graph',
+
+                      },
+                    //   newly added to get rid of the gridlines
+                      gridLines: {
+                        display:false
+                                }
+                  }],
+                  yAxes: [{
+                      display: 'true',
+                      scaleLabel: {
+                          display: 'true',
+                          labelString: 'C'
+                      },
+                      gridLines: {
+                             display:false
+                                 }   
+                  }],
+
+              }
+          }
+      });
+    </script>
+  </body>
+</html>
