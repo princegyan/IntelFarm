@@ -4,6 +4,6 @@ The micrcontroller used is the raspberry pi.
 
 
 # Contributing
-This project is not open for contributions yet
+This project is not open for contributions yet. Okay
 
 
