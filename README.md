@@ -6,4 +6,6 @@ The microcontroller used is the raspberry pi.
 # Contributing
 This project is not open for contributions yet
 
+# Important
+This project is obsolete and is no loner mantained. Please use [this](https://github.com/princegyan/Precision-Farming) 
 
